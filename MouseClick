@@ -1,0 +1,35 @@
+if(TFb==1)
+stats_b=regionprops(m,'area');
+max_area = 0;
+fori = 1 : length(stats_b)
+area = stats_b(i).Area;
+if(area>max_area)
+max_area=area;
+end
+end
+if(max_area>2000)
+importjava.awt.Robot;
+importjava.awt.event.*;
+mouse = Robot;
+mouse.mousePress(InputEvent.BUTTON1_MASK);
+mouse.mouseRelease(InputEvent.BUTTON1_MASK);
+end
+end
+if(TFr==1)
+stats_r=regionprops(r,'area');
+max_area_r = 0;
+fori = 1 : length(stats_r)
+area = stats_r(i).Area;
+if(area>max_area_r)
+max_area_r=area;
+end
+end
+if(max_area_r>2000)
+importjava.awt.Robot;
+importjava.awt.event.*;
+mouse = Robot;
+mouse.mousePress(InputEvent.BUTTON3_MASK);
+mouse.mouseRelease(InputEvent.BUTTON3_MASK);
+end
+end
+end
