@@ -1,0 +1,18 @@
+seg=strel('disk',4);
+img2=imopen(diff_bwg,seg);
+l=bwlabel(img2);
+img4=imopen(diff_bwb,seg);
+m=bwlabel(img4);
+img5=imopen(diff_bwr,seg);
+r=bwlabel(img5);
+TFg=any(l(:));
+if(TFg==1)
+stats_gr=regionprops(l,'centroid');
+a=stats_gr(1).Centroid;
+end
+TFb=any(m(:));
+TFr=any(r(:));
+importjava.awt.Robot;
+cursor = Robot;
+cursor.mouseMove(2.134375*a(1),1.6*a(2));
+pause(0.001);
