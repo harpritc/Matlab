@@ -1,0 +1,21 @@
+clear all;
+clc;
+vid=videoinput('winvideo',1,'YUY2_640x480');
+preview(vid);
+pause(4);
+while(1)
+im=getsnapshot(vid);
+im=ycbcr2rgb(im);
+im_gray=rgb2gray(im);
+diff_green=imsubtract(im(:,:,2),im_gray);
+diff_green = medfilt2(diff_green, [3 3]);
+diff_bwg=im2bw(diff_green,0.03);
+
+diff_blue=imsubtract(im(:,:,3),im_gray);
+diff_blue = medfilt2(diff_blue, [3 3]);
+diff_bwb=im2bw(diff_blue,0.13);
+
+diff_red=imsubtract(im(:,:,1),im_gray);
+diff_red = medfilt2(diff_red, [3 3]);
+diff_bwr=im2bw(diff_red,0.18);
+end
